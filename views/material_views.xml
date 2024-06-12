@@ -1,0 +1,45 @@
+<odoo>
+    <record id="view_material_tree" model="ir.ui.view">
+        <field name="name">custom.material.tree</field>
+        <field name="model">custom.material</field>
+        <field name="arch" type="xml">
+            <tree string="Materials">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="type"/>
+                <field name="buy_price"/>
+                <field name="supplier_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_material_form" model="ir.ui.view">
+        <field name="name">custom.material.form</field>
+        <field name="model">custom.material</field>
+        <field name="arch" type="xml">
+            <form string="Materials">
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                        <field name="type"/>
+                        <field name="buy_price"/>
+                        <field name="supplier_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="menu_materials_root" name="Materials" sequence="10"/>
+    <menuitem id="menu_materials" name="Materials" parent="menu_materials_root" sequence="10"/>
+
+    <record id="action_materials" model="ir.actions.act_window">
+        <field name="name">Materials</field>
+        <field name="res_model">custom.material</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_material_tree"/>
+    </record>
+
+    <menuitem id="menu_materials_action" name="Materials" parent="menu_materials" action="action_materials"/>
+</odoo>

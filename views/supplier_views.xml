@@ -1,0 +1,36 @@
+<odoo>
+    <record id="view_supplier_tree" model="ir.ui.view">
+        <field name="name">custom.supplier.tree</field>
+        <field name="model">custom.supplier</field>
+        <field name="arch" type="xml">
+            <tree string="Suppliers">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_supplier_form" model="ir.ui.view">
+        <field name="name">custom.supplier.form</field>
+        <field name="model">custom.supplier</field>
+        <field name="arch" type="xml">
+            <form string="Suppliers">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="menu_suppliers" name="Suppliers" parent="menu_materials_root" sequence="20"/>
+
+    <record id="action_suppliers" model="ir.actions.act_window">
+        <field name="name">Suppliers</field>
+        <field name="res_model">custom.supplier</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_supplier_tree"/>
+    </record>
+
+    <menuitem id="menu_suppliers_action" name="Suppliers" parent="menu_suppliers" action="action_suppliers"/>
+</odoo>
